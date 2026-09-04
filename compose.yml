@@ -1,0 +1,15 @@
+services:
+  virtual-printer:
+    build: .
+    container_name: paperless-printer
+    network_mode: host
+    environment:
+      - PRINTER_NAME=${PRINTER_NAME:-Virtual_PDF}
+      - PRINTER_DESC=${PRINTER_DESC:-Paperless PDF Printer}
+      - PRINTER_UUID=${PRINTER_UUID:-urn:uuid:11111111-2222-3333-4444-555555555555}
+      - AVAHI_HOSTNAME=${AVAHI_HOSTNAME:-PaperlessPrinter}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+    volumes:
+      - ./consume:/output
+    restart: unless-stopped
