@@ -1,6 +1,6 @@
 services:
   virtual-printer:
-    build: .
+    build: https://github.com/mattheys/virtual-printer.git
     container_name: paperless-printer
     network_mode: host
     environment:
